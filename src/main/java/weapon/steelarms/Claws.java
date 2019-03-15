@@ -2,7 +2,7 @@ package weapon.steelarms;
 
 public class Claws extends SteelArms {
     public Claws(){
-        super("Claws", 40, 0);
+        super("Claws", 50, 0);
         weaponClass = "Когти";
     }
 
