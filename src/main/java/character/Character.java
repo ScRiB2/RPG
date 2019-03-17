@@ -2,7 +2,9 @@ package character;
 import weapon.Weapon;
 import weapon.steelarms.Knife;
 
+import map.Map;
 
+import java.awt.geom.Point2D;
 import java.util.Random;
 
 public abstract class Character{
@@ -12,6 +14,8 @@ public abstract class Character{
     private int damage;
     private boolean armor = false;  //есть ли броня
     Weapon weapon;
+    Map map;
+    Point2D coordinateCharacter;
 
     public String getName() {
         return name;
@@ -74,5 +78,10 @@ public abstract class Character{
 
     public boolean isDie(){
         return (hp == 0);
+    }
+
+    public void spawn(Map map, int x, int y){
+        coordinateCharacter = new Point2D.Float(x,y);
+        map.addNewCharacter(this);
     }
 }
