@@ -15,10 +15,14 @@ public abstract class Character{
     private boolean armor = false;  //есть ли броня
     Weapon weapon;
     Map map;
-    private Point2D coordinateCharacter;
+    private Point2D coordinate;
 
     Character(String name){
         this.name = name;
+    }
+
+    public Point2D getCoordinate() {
+        return coordinate;
     }
 
     public String getName() {
@@ -81,7 +85,7 @@ public abstract class Character{
     }
 
     public void spawn(Map map, int x, int y){
-        coordinateCharacter = new Point2D.Float(x,y);
+        coordinate = new Point2D.Double(x,y);
         map.addNewCharacter(this);
     }
 }
