@@ -8,7 +8,15 @@ import weapon.Weapon;
 public abstract class Firearms extends Weapon {
     private int capacity;   // ёмкость магазина
     private int accuracy;   // точность
-    private int amount;     // текущее количество патрон в магазине
+    private int amount;     // текущее количество патронов в магазине
+
+    Firearms(){}
+
+    Firearms(String name, int damage, int cost, int capacity, int accuracy){
+        super(name,damage,cost);
+        this.amount = this.capacity = capacity;
+        this.accuracy = accuracy;
+    }
 
     public int getAmount() {
         return amount;
@@ -32,14 +40,6 @@ public abstract class Firearms extends Weapon {
 
     void setCapacity(int capacity) {
         this.capacity = capacity;
-    }
-
-    Firearms(){}
-
-    Firearms(String name, int damage, int cost, int capacity, int accuracy){
-        super(name,damage,cost);
-        this.amount = this.capacity = capacity;
-        this.accuracy = accuracy;
     }
 
     public boolean isEmpty(){

@@ -6,6 +6,14 @@ public abstract class Weapon implements IExtendedMagazine, IAssaultGrip, IAim{
     private int damage;             // урон
     private int cost;               // стоимость
 
+    public Weapon(){}
+
+    public Weapon(String name, int damage, int cost){
+        this.name = name;
+        this.damage = damage;
+        this.cost = cost;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -30,11 +38,5 @@ public abstract class Weapon implements IExtendedMagazine, IAssaultGrip, IAim{
         return damage;
     }
 
-    public Weapon(){}
 
-    public Weapon(String name, int damage, int cost){
-        this.name = name;
-        this.damage = damage;
-        this.cost = cost;
-    }
 }

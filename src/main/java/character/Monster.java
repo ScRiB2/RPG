@@ -3,10 +3,10 @@ import weapon.steelarms.*;
 
 public class Monster extends Character{
     public Monster(String name){
+        super(name);
         weapon = new Claws();
         setDamage(weapon.getDamage());
-        setName(name);
-        setHp(200);
+        hp = 200;
     }
 
     @Override

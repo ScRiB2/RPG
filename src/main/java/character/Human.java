@@ -8,11 +8,14 @@ import java.util.Random;
 public class Human extends Character implements IArmor{
     private int money = 1000;
 
+    {
+        hp = 100;
+    }
 
     public Human(String name){
+        super(name);
         weapon = new Knife();
         setDamage(weapon.getDamage());
-        setName(name);
     }
 
     public Human buyWeapon(Weapon weapon){

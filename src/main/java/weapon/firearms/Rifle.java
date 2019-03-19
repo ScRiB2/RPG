@@ -1,18 +1,18 @@
 package weapon.firearms;
 
-import weapon.firearms.Firearms;
-
 public class Rifle extends Firearms {
+    {
+        weaponClass = "Автомат";
+    }
+
     public Rifle(String name, int damage){
         setName(name);
         setDamage(damage);
-        weaponClass = "Автомат";
-    }
-    public Rifle(String name, int damage, int cost, int capacity, int accuracy){
-        super(name, damage, cost, capacity, accuracy);
-        weaponClass = "Автомат";
     }
 
+    public Rifle(String name, int damage, int cost, int capacity, int accuracy){
+        super(name, damage, cost, capacity, accuracy);
+    }
 
     public void setAim() {
         setAccuracy(getAccuracy() + (int) (0.2 * getAccuracy()));

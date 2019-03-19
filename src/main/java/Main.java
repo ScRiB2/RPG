@@ -19,7 +19,7 @@ public class Main {
         Monster mon = new Monster("Кровосос");
         one.spawn(map, 10, 20);
         map.viewMap();
-        /*mon.attack(one);
+        mon.attack(one);
         one.buyWeapon(Glock).upgradeWeapon(Upgrades.Aim);
         one.buyArmor();
         for (int i = 0; i < 5; i++) {
@@ -40,6 +40,6 @@ public class Main {
 
         System.out.println(one.getName() + ": " + one.getKilled());
         System.out.println(two.getName() + ": " + two.getKilled());
-        */
+
     }
 }

@@ -8,36 +8,36 @@ import java.awt.geom.Point2D;
 import java.util.Random;
 
 public abstract class Character{
-    private String name;
-    private int hp = 100;
+    final private String name;
+    int hp;
     private int killed = 0; //количество убитых противников
     private int damage;
     private boolean armor = false;  //есть ли броня
     Weapon weapon;
     Map map;
-    Point2D coordinateCharacter;
+    private Point2D coordinateCharacter;
+
+    Character(String name){
+        this.name = name;
+    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public boolean isArmor() {
+    boolean isArmor() {
         return armor;
     }
 
-    public void setArmor(boolean armor) {
+    void setArmor(boolean armor) {
         this.armor = armor;
     }
 
-    public int getHp() {
+    int getHp() {
         return hp;
     }
 
-    public void setHp(int hp) {
+    void setHp(int hp) {
         this.hp = hp;
     }
 
@@ -45,15 +45,15 @@ public abstract class Character{
         return killed;
     }
 
-    public void setKilled(int killed) {
+    void setKilled(int killed) {
         this.killed = killed;
     }
 
-    public int getDamage() {
+    int getDamage() {
         return damage;
     }
 
-    public void setDamage(int damage) {
+    void setDamage(int damage) {
         this.damage = damage;
     }
 
