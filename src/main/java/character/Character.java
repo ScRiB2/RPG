@@ -91,15 +91,15 @@ public abstract class Character{
 
     @Override
     public boolean equals(Object otherObject) {
-        if(!super.equals(otherObject)) return false;
-        if(otherObject == null) return false;
-        if(getClass() != otherObject.getClass()) return false;
+        if (this == otherObject) return true;
+        if (otherObject == null) return false;
+        if (getClass() != otherObject.getClass()) return false;
         Character other = (Character)otherObject;
         return name.equals(other.name)
                 && hp == other.hp
                 && killed == other.killed
                 && damage == other.damage
                 && armor == other.armor
-                && weapon.equals(other);
+                && weapon.equals(other.weapon);
     }
 }

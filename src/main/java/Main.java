@@ -23,8 +23,10 @@ public class Main {
         System.out.println(setWeapon);
 
 
-        /*Human one = new Human("Петя");
-        Human two = new Human("Вася");
+        Human one = new Human("Петя");
+        Human two = new Human("Петя");
+        System.out.println(one.equals(two));
+        /*
         Monster mon = new Monster("Кровосос");
         one.spawn(map, 10, 20);
         map.viewMap();
