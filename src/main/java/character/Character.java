@@ -108,4 +108,16 @@ public abstract class Character{
     public int hashCode() {
         return Objects.hash(name, hp, killed, damage, armor, weapon);
     }
+
+    @Override
+    public String toString() {
+        return getClass().getName()
+                + "[name = " + name
+                + ",hp = " + hp
+                + ",killed = " + killed
+                + ",damage = " + damage
+                + ",armor = " + armor
+                + ",weapon = " + weapon.getName()
+                + "]";
+    }
 }

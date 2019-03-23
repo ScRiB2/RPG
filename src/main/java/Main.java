@@ -25,7 +25,7 @@ public class Main {
 
         Human one = new Human("Петя");
         Human two = new Human("Петя");
-        System.out.println(one.equals(two));
+        System.out.println(one.toString());
         /*
         Monster mon = new Monster("Кровосос");
         one.spawn(map, 10, 20);

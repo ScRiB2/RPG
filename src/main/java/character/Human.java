@@ -126,4 +126,11 @@ public class Human extends Character implements IArmor{
     public int hashCode() {
         return super.hashCode() + 5 * Objects.hashCode(money);
     }
+
+    @Override
+    public String toString() {
+        return super.toString()
+                + "[money = " + money
+                + "]";
+    }
 }
