@@ -2,6 +2,8 @@ package weapon.firearms;
 
 import weapon.Weapon;
 
+import java.util.Objects;
+
 /**
  * огнестрельное оружие
  */
@@ -53,5 +55,10 @@ public abstract class Firearms extends Weapon {
         return capacity == other.capacity
                 && accuracy == other.accuracy
                 && amount == other.amount;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode()+ Objects.hash(capacity,accuracy,amount);
     }
 }

@@ -3,6 +3,8 @@ package character;
 import weapon.*;
 import weapon.firearms.Firearms;
 import weapon.steelarms.*;
+
+import java.util.Objects;
 import java.util.Random;
 
 public class Human extends Character implements IArmor{
@@ -118,5 +120,10 @@ public class Human extends Character implements IArmor{
         if(!super.equals(otherObject)) return false;
         Human other = (Human)otherObject;
         return money == other.money;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() + 5 * Objects.hashCode(money);
     }
 }

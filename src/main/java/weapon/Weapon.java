@@ -1,4 +1,5 @@
 package weapon;
+import java.util.Objects;
 
 public abstract class Weapon implements IExtendedMagazine, IAssaultGrip, IAim{
     protected String weaponClass;   // класс оружия(пистолет, автомат и т.д.)
@@ -6,7 +7,7 @@ public abstract class Weapon implements IExtendedMagazine, IAssaultGrip, IAim{
     private int damage;             // урон
     private int cost;               // стоимость
 
-    public Weapon(){}
+    protected Weapon(){}
 
     public Weapon(String name, int damage, int cost){
         this.name = name;
@@ -48,5 +49,10 @@ public abstract class Weapon implements IExtendedMagazine, IAssaultGrip, IAim{
                 && name.equals(other.name)
                 && damage == other.damage
                 && cost == other.cost;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(weaponClass, name, damage, cost);
     }
 }

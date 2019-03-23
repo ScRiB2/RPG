@@ -6,6 +6,7 @@ import map.Map;
 
 import java.awt.geom.Point2D;
 import java.util.Random;
+import java.util.Objects;
 
 public abstract class Character{
     final private String name;
@@ -101,5 +102,10 @@ public abstract class Character{
                 && damage == other.damage
                 && armor == other.armor
                 && weapon.equals(other.weapon);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, hp, killed, damage, armor, weapon);
     }
 }
