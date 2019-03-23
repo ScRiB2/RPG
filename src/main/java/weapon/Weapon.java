@@ -38,5 +38,15 @@ public abstract class Weapon implements IExtendedMagazine, IAssaultGrip, IAim{
         return damage;
     }
 
-
+    @Override
+    public boolean equals(Object otherObject) {
+        if(!super.equals(otherObject)) return false;
+        if (otherObject == null) return false;
+        if (getClass() != otherObject.getClass()) return false;
+        Weapon other = (Weapon)otherObject;
+        return weaponClass.equals(other.weaponClass)
+                && name.equals(other.name)
+                && damage == other.damage
+                && cost == other.cost;
+    }
 }

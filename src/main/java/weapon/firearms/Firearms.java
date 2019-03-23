@@ -45,4 +45,13 @@ public abstract class Firearms extends Weapon {
     public boolean isEmpty(){
         return (amount == 0);
     }
+
+    @Override
+    public boolean equals(Object otherObject) {
+        if(!super.equals(otherObject)) return false;
+        Firearms other = (Firearms)otherObject;
+        return capacity == other.capacity
+                && accuracy == other.accuracy
+                && amount == other.amount;
+    }
 }

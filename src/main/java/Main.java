@@ -1,10 +1,11 @@
-import weapon.firearms.Pistol;
-import weapon.firearms.Rifle;
-import weapon.firearms.Shotgun;
-import weapon.firearms.SniperRifle;
+import weapon.Weapon;
+import weapon.firearms.*;
 import character.*;
 import weapon.Upgrades;
 import map.Map;
+import java.util.*;
+
+import java.util.HashSet;
 
 public class Main {
     public static void main(String[] args){
@@ -14,7 +15,15 @@ public class Main {
         SniperRifle AWP = new SniperRifle("AWP", 100, 4750, 10, 70); //4750
         Rifle AK = new Rifle("AK-47",36,2700,30,40); //2700
 
-        Human one = new Human("Петя");
+        HashSet<Weapon> setWeapon = new HashSet<Weapon>();
+        setWeapon.add(Glock);
+        setWeapon.add(SWAG);
+        setWeapon.add(AWP);
+        setWeapon.add(AK);
+        System.out.println(setWeapon);
+
+
+        /*Human one = new Human("Петя");
         Human two = new Human("Вася");
         Monster mon = new Monster("Кровосос");
         one.spawn(map, 10, 20);
@@ -39,7 +48,7 @@ public class Main {
         }
 
         System.out.println(one.getName() + ": " + one.getKilled());
-        System.out.println(two.getName() + ": " + two.getKilled());
+        System.out.println(two.getName() + ": " + two.getKilled());*/
 
     }
 }

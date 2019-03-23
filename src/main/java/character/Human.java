@@ -9,7 +9,7 @@ public class Human extends Character implements IArmor{
     private int money = 1000;
 
     {
-        hp = 100;
+        setHp(100);
     }
 
     public Human(String name){
@@ -111,5 +111,12 @@ public class Human extends Character implements IArmor{
         money -= 400;
         setArmor(true);
         System.out.println(this.getName() + " купил броню");
+    }
+
+    @Override
+    public boolean equals(Object otherObject) {
+        if(!super.equals(otherObject)) return false;
+        Human other = (Human)otherObject;
+        return money == other.money;
     }
 }

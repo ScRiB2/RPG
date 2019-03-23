@@ -6,7 +6,7 @@ public class Monster extends Character{
         super(name);
         weapon = new Claws();
         setDamage(weapon.getDamage());
-        hp = 200;
+        setHp(200);
     }
 
     @Override

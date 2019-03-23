@@ -9,7 +9,7 @@ import java.util.Random;
 
 public abstract class Character{
     final private String name;
-    int hp;
+    private int hp;
     private int killed = 0; //количество убитых противников
     private int damage;
     private boolean armor = false;  //есть ли броня
@@ -87,5 +87,19 @@ public abstract class Character{
     public void spawn(Map map, int x, int y){
         coordinate = new Point2D.Double(x,y);
         map.addNewCharacter(this);
+    }
+
+    @Override
+    public boolean equals(Object otherObject) {
+        if(!super.equals(otherObject)) return false;
+        if(otherObject == null) return false;
+        if(getClass() != otherObject.getClass()) return false;
+        Character other = (Character)otherObject;
+        return name.equals(other.name)
+                && hp == other.hp
+                && killed == other.killed
+                && damage == other.damage
+                && armor == other.armor
+                && weapon.equals(other);
     }
 }
