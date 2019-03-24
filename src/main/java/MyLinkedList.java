@@ -22,8 +22,9 @@ public class MyLinkedList<E> implements List<E>{
 
     public MyLinkedList(){}
 
-    public MyLinkedList(E[] mas){
-
+    public MyLinkedList(Collection<? extends E> c){
+        this();
+        addAll(c);
     }
 
 
@@ -63,9 +64,25 @@ public class MyLinkedList<E> implements List<E>{
             first = new Node<>(null, e,null);
             last = first;
             size++;
+            return true;
         }
-
+        Node<E> newNode = new Node<>(last,e,null);
+        last.next = newNode;
+        last = newNode;
+        size++;
         return true;
+    }
+
+    public E getFirst() {
+        if (first == null)
+            throw new NoSuchElementException();
+        return first.data;
+    }
+
+    public E getLast() {
+        if (last == null)
+            throw new NoSuchElementException();
+        return last.data;
     }
 
     @Override
@@ -80,7 +97,16 @@ public class MyLinkedList<E> implements List<E>{
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        return false;
+        Object[] a = c.toArray();
+        int numNew = a.length;
+        if (numNew == 0)
+            return false;
+
+        for (Object o : a){
+            E e = (E) o;
+            add(e);
+        }
+        return true;
     }
 
     @Override
@@ -103,9 +129,37 @@ public class MyLinkedList<E> implements List<E>{
 
     }
 
+    private Node<E> node(int index){
+        if (index < size/2-1){
+            Node<E> curr = first;
+            for (int i = 0; i < index; i++) {
+                curr = curr.next;
+            }
+            return curr;
+        }
+        else{
+            Node<E> curr = last;
+            for (int i = size-1; i > index; --i) {
+                curr = curr.prev;
+            }
+            return curr;
+        }
+
+    }
+
     @Override
     public E get(int index) {
-        return null;
+        checkElementIndex(index);
+        return node(index).data;
+    }
+
+    private void checkElementIndex(int index){
+        if(index < 0 || index >= size)
+            throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+    }
+
+    private String outOfBoundsMsg(int index) {
+        return "Index: "+index+", Size: "+size;
     }
 
     @Override
@@ -147,4 +201,5 @@ public class MyLinkedList<E> implements List<E>{
     public List<E> subList(int fromIndex, int toIndex) {
         return null;
     }
+
 }

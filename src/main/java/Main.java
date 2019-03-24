@@ -1,3 +1,5 @@
+import com.sun.xml.internal.bind.v2.runtime.SwaRefAdapter;
+import sun.awt.image.ImageWatched;
 import weapon.Weapon;
 import weapon.firearms.*;
 import character.*;
@@ -15,18 +17,22 @@ public class Main {
         SniperRifle AWP = new SniperRifle("AWP", 100, 4750, 10, 70); //4750
         Rifle AK = new Rifle("AK-47",36,2700,30,40); //2700
 
-        HashSet<Weapon> setWeapon = new HashSet<Weapon>();
-        setWeapon.add(Glock);
-        setWeapon.add(SWAG);
-        setWeapon.add(AWP);
-        setWeapon.add(AK);
-        System.out.println(setWeapon);
+
+        LinkedList<Weapon> z = new LinkedList<>();
+        z.add(Glock);
+        z.add(SWAG);
+        for (int i = 0; i < z.size(); i++) {
+            System.out.println(z.get(i));
+        }
 
 
+        MyLinkedList<Weapon> c = new MyLinkedList<Weapon>();
+        c.add(Glock);
+        c.add(SWAG);
+        for (int i = 0; i < c.size(); i++) {
+            System.out.println(c.get(i));
+        }
 
-        Human one = new Human("Петя");
-        Human two = new Human("Петя");
-        System.out.println(one.toString());
         /*
         Monster mon = new Monster("Кровосос");
         one.spawn(map, 10, 20);
