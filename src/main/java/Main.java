@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args){
         Map map = new Map();
         Pistol Glock = new Pistol("Glock-18", 28, 200, 20, 50);
-        Shotgun SWAG = new Shotgun("SWAG-7", 50,500,5,30);          //1800
+        Shotgun SWAG = new Shotgun("SWAG-7", 50,1800,5,30);          //1800
         SniperRifle AWP = new SniperRifle("AWP", 100, 4750, 10, 70); //4750
         Rifle AK = new Rifle("AK-47",36,2700,30,40); //2700
 
@@ -21,6 +21,7 @@ public class Main {
         setWeapon.add(AWP);
         setWeapon.add(AK);
         System.out.println(setWeapon);
+
 
 
         Human one = new Human("Петя");
