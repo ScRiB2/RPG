@@ -27,7 +27,6 @@ public class MyLinkedList<E> implements List<E>{
         addAll(c);
     }
 
-
     @Override
     public int size() {
         return size;
@@ -35,7 +34,7 @@ public class MyLinkedList<E> implements List<E>{
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return first == null;
     }
 
     @Override

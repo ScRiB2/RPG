@@ -21,17 +21,14 @@ public class Main {
         LinkedList<Weapon> z = new LinkedList<>();
         z.add(Glock);
         z.add(SWAG);
-        for (int i = 0; i < z.size(); i++) {
-            System.out.println(z.get(i));
-        }
+
 
 
         MyLinkedList<Weapon> c = new MyLinkedList<Weapon>();
         c.add(Glock);
         c.add(SWAG);
-        for (int i = 0; i < c.size(); i++) {
-            System.out.println(c.get(i));
-        }
+
+        System.out.println(c.isEmpty());
 
         /*
         Monster mon = new Monster("Кровосос");
