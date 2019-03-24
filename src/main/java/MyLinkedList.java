@@ -84,12 +84,6 @@ public class MyLinkedList<E> implements List<E>{
         return last.data;
     }
 
-    private void delete(Node<E> curr){
-        if (curr.prev == null){
-
-        }
-    }
-
     public E removeFirst(){
         if (first == null)
             throw new NoSuchElementException();
@@ -116,6 +110,24 @@ public class MyLinkedList<E> implements List<E>{
             prev.next = null;
         size--;
         return el;
+    }
+
+    private void delete(Node<E> curr){
+        if (curr.prev == null){
+            removeFirst();
+            return;
+        }
+        if (curr.next == null){
+            removeLast();
+            return;
+        }
+
+        curr.prev.next = curr.next;
+        curr.next.prev = curr.prev;
+        curr.prev = null;
+        curr.data = null;
+        curr.next = null;
+        size--;
     }
 
     @Override
