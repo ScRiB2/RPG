@@ -101,6 +101,21 @@ public class MyLinkedList<E> implements List<E>{
         if(next != null)
             next.prev = null;
         size--;
+        return el;
+    }
+
+    public E removeLast(){
+        if (first == null)
+            throw new NoSuchElementException();
+        E el = last.data;
+        Node<E> prev = last.prev;
+        last.prev = null;
+        last.data = null;
+        last = prev;
+        if(prev != null)
+            prev.next = null;
+        size--;
+        return el;
     }
 
     @Override
