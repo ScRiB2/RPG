@@ -27,6 +27,7 @@ public class Main {
         MyLinkedList<Weapon> c = new MyLinkedList<Weapon>();
         c.add(Glock);
         c.add(SWAG);
+        c.
 
         System.out.println(c.isEmpty());
 

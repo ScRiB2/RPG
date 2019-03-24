@@ -112,22 +112,20 @@ public class MyLinkedList<E> implements List<E>{
         return el;
     }
 
-    private void delete(Node<E> curr){
-        if (curr.prev == null){
-            removeFirst();
-            return;
-        }
-        if (curr.next == null){
-            removeLast();
-            return;
-        }
+    private E delete(Node<E> curr){
+        if (curr.prev == null)
+            return removeFirst();
+        if (curr.next == null)
+            return removeLast();
 
+        E el = curr.data;
         curr.prev.next = curr.next;
         curr.next.prev = curr.prev;
         curr.prev = null;
         curr.data = null;
         curr.next = null;
         size--;
+        return el;
     }
 
     @Override
@@ -149,6 +147,12 @@ public class MyLinkedList<E> implements List<E>{
             }
         }
         return false;
+    }
+
+    @Override
+    public E remove(int index) {
+        checkElementIndex(index);
+        return delete(node(index));
     }
 
     @Override
@@ -231,11 +235,6 @@ public class MyLinkedList<E> implements List<E>{
     @Override
     public void add(int index, E element) {
 
-    }
-
-    @Override
-    public E remove(int index) {
-        return null;
     }
 
     @Override
