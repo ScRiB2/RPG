@@ -178,7 +178,22 @@ public class MyLinkedList<E> implements List<E>{
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        int index = 0;
+        if(o == null){
+            for (Node<E> curr = first; curr != null; curr = curr.next) {
+                if (curr.data == null)
+                    return index;
+                index++;
+            }
+        }
+        else{
+            for (Node<E> curr = first; curr != null; curr = curr.next) {
+                if (o.equals(curr.data))
+                    return index;
+                index++;
+            }
+        }
+        return -1;
     }
 
     @Override
