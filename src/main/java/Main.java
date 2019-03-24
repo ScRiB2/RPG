@@ -17,21 +17,8 @@ public class Main {
         SniperRifle AWP = new SniperRifle("AWP", 100, 4750, 10, 70); //4750
         Rifle AK = new Rifle("AK-47",36,2700,30,40); //2700
 
-
-        LinkedList<Weapon> z = new LinkedList<>();
-        z.add(Glock);
-        z.add(SWAG);
-
-
-
-        MyLinkedList<Weapon> c = new MyLinkedList<Weapon>();
-        c.add(Glock);
-        c.add(SWAG);
-        c.
-
-        System.out.println(c.isEmpty());
-
-        /*
+        Human one = new Human("Петя");
+        Human two = new Human("Вася");
         Monster mon = new Monster("Кровосос");
         one.spawn(map, 10, 20);
         map.viewMap();
@@ -55,7 +42,7 @@ public class Main {
         }
 
         System.out.println(one.getName() + ": " + one.getKilled());
-        System.out.println(two.getName() + ": " + two.getKilled());*/
+        System.out.println(two.getName() + ": " + two.getKilled());
 
     }
 }
