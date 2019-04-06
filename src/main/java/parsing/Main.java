@@ -10,15 +10,12 @@ import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        CSVReader reader = new CSVReader(new FileReader("C:\\Users\\ScRiB\\Desktop\\1\\data.csv"), ',', '"', 1);
+        CSVReader reader = new CSVReader(new FileReader("C:\\Users\\ScRiB\\Desktop\\1\\data.csv"),
+                ',', '"', 1);
 
         ArrayList<Geo> geos = new ArrayList<>();
-
         readFile(geos, reader);
 
-//        for (Geo geo : geos) {
-//            diffPop(geo);
-//        }
         System.out.println("========================================================================");
         printTopByPop(geos);
         System.out.println("========================================================================");
