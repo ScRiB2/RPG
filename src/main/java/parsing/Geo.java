@@ -1,6 +1,6 @@
 package parsing;
 
-public class Geo{
+class Geo {
     String geoName;
     String geoId;
     int pop2013;
@@ -9,7 +9,7 @@ public class Geo{
     int pop2016;
     private int diff;
 
-    public Geo(String geoName, String geoId, int pop2013, int pop2014, int pop2015, int pop2016) {
+    Geo(String geoName, String geoId, int pop2013, int pop2014, int pop2015, int pop2016) {
         this.geoName = geoName;
         this.geoId = geoId;
         this.pop2013 = pop2013;
@@ -19,8 +19,11 @@ public class Geo{
         this.diff = pop2016 - pop2013;
     }
 
-    public int getDiff() {
+    int getDiff() {
         return diff;
     }
 
+    int getForecast() {
+        return ((pop2014 - pop2013) + (pop2015 - pop2014) + (pop2016 - pop2013)) / 3;
+    }
 }
