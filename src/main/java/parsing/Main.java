@@ -22,6 +22,7 @@ public class Main {
         printTopByDiff(geos);
         System.out.println("========================================================================");
         forecastFor2017(geos);
+        System.out.println("========================================================================");
     }
 
     private static ArrayList<Geo> readFile(ArrayList<Geo> geos, CSVReader reader) throws IOException {
