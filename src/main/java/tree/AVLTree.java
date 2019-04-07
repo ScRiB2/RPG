@@ -51,9 +51,49 @@ public class AVLTree<T> {
      *
      * @param p
      */
-    private void fixheight(Node<T> p) {
+    private void fixHeight(Node<T> p) {
         int hl = height(p.left);
         int hr = height(p.right);
         p.height = (hl > hr ? hl : hr) + 1;
+    }
+
+    private Node<T> rightRotate(Node<T> p) {
+        Node<T> q = p.left;
+        p.left = q.right;
+        q.right = p;
+        fixHeight(p);
+        fixHeight(q);
+        return q;
+    }
+
+    private Node<T> leftRotate(Node<T> p) {
+        Node<T> q = p.right;
+        p.right = q.left;
+        q.left = p;
+        fixHeight(p);
+        fixHeight(q);
+        return q;
+    }
+
+    /**
+     * Балансировка узла p
+     * @param p
+     * @return
+     */
+    private Node<T> balance(Node<T> p) {
+        fixHeight(p);
+        if (bfactor(p) == 2) {
+            if (bfactor(p.right) < 0) {
+                p.right = rightRotate(p.right);
+            }
+            return leftRotate(p);
+        }
+        if (bfactor(p) == -2) {
+            if (bfactor(p.left) > 0) {
+                p.left = leftRotate(p.left);
+            }
+            return rightRotate(p);
+        }
+        return p;
     }
 }
