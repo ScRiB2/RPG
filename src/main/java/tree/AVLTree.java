@@ -1,11 +1,9 @@
 package tree;
 
 /**
- * Сбалансированное АВЛ-дерево
- *
- * @param <T>
+ * Сбалансированное АВЛ-дерево для целых чисел
  */
-public class AVLTree<T> {
+public class AVLTree {
     /**
      * высота листа
      */
@@ -15,16 +13,21 @@ public class AVLTree<T> {
      */
     private final int HIGHT_NULL_TREE = 0;
 
-    private class Node<T> {
-        T key;
+    private class Node {
+        int value;
         int height = HIGHT_LIST;
-        Node<T> left = null;
-        Node<T> right = null;
+        Node left = null;
+        Node right = null;
 
-        Node(T k) {
-            key = k;
+        Node(int k) {
+            value = k;
         }
     }
+
+    /**
+     * Корневой элемент
+     */
+    private Node root = null;
 
     /**
      * Возвращает высоту узла p
@@ -32,7 +35,7 @@ public class AVLTree<T> {
      * @param p
      * @return
      */
-    private int height(Node<T> p) {
+    private int height(Node p) {
         return (p != null) ? p.height : HIGHT_NULL_TREE;
     }
 
@@ -42,7 +45,7 @@ public class AVLTree<T> {
      * @param p
      * @return
      */
-    private int bfactor(Node<T> p) {
+    private int bfactor(Node p) {
         return height(p.right) - height(p.left);
     }
 
@@ -51,14 +54,14 @@ public class AVLTree<T> {
      *
      * @param p
      */
-    private void fixHeight(Node<T> p) {
+    private void fixHeight(Node p) {
         int hl = height(p.left);
         int hr = height(p.right);
         p.height = (hl > hr ? hl : hr) + 1;
     }
 
-    private Node<T> rightRotate(Node<T> p) {
-        Node<T> q = p.left;
+    private Node rightRotate(Node p) {
+        Node q = p.left;
         p.left = q.right;
         q.right = p;
         fixHeight(p);
@@ -66,8 +69,8 @@ public class AVLTree<T> {
         return q;
     }
 
-    private Node<T> leftRotate(Node<T> p) {
-        Node<T> q = p.right;
+    private Node leftRotate(Node p) {
+        Node q = p.right;
         p.right = q.left;
         q.left = p;
         fixHeight(p);
@@ -77,10 +80,11 @@ public class AVLTree<T> {
 
     /**
      * Балансировка узла p
+     *
      * @param p
      * @return
      */
-    private Node<T> balance(Node<T> p) {
+    private Node balance(Node p) {
         fixHeight(p);
         if (bfactor(p) == 2) {
             if (bfactor(p.right) < 0) {
@@ -95,5 +99,22 @@ public class AVLTree<T> {
             return rightRotate(p);
         }
         return p;
+    }
+
+    private Node add(Node p, int k) {
+        if (root == null) return root = new Node(k);
+        if (k < p.value) p.left = add(p.left, k);
+        else if (k > p.value) p.right = add(p.right, k);
+        else return root;
+        return balance(p);
+
+    }
+
+    public void insert(int k){
+        add(root,k);
+    }
+
+    AVLTree() {
+
     }
 }
