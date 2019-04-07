@@ -4,18 +4,9 @@ package tree;
  * Сбалансированное АВЛ-дерево для целых чисел
  */
 public class AVLTree {
-    /**
-     * высота листа
-     */
-    private final int HIGHT_LIST = 1;
-    /**
-     * Высота пустого дерева
-     */
-    private final int HIGHT_NULL_TREE = 0;
-
     private class Node {
         int value;
-        int height = HIGHT_LIST;
+        int height = 1;
         Node left = null;
         Node right = null;
 
@@ -29,6 +20,23 @@ public class AVLTree {
      */
     private Node root = null;
 
+
+    public AVLTree() {
+
+    }
+
+    public AVLTree(int k) {
+        this();
+        root = add(root, k);
+    }
+
+    public AVLTree(Integer[] c) {
+        this();
+        for (Integer integer : c) {
+            root = add(root, integer);
+        }
+    }
+
     /**
      * Возвращает высоту узла p
      *
@@ -36,7 +44,7 @@ public class AVLTree {
      * @return
      */
     private int height(Node p) {
-        return (p != null) ? p.height : HIGHT_NULL_TREE;
+        return (p != null) ? p.height : 0;
     }
 
     /**
@@ -102,19 +110,101 @@ public class AVLTree {
     }
 
     private Node add(Node p, int k) {
-        if (root == null) return root = new Node(k);
+        if (p == null) return new Node(k);
         if (k < p.value) p.left = add(p.left, k);
         else if (k > p.value) p.right = add(p.right, k);
-        else return root;
         return balance(p);
-
     }
 
-    public void insert(int k){
-        add(root,k);
+    public void insert(int k) {
+        root = add(root, k);
     }
 
-    AVLTree() {
+    /**
+     * Поиск узла с минимальным ключом
+     *
+     * @param p
+     * @return
+     */
+    private Node findMin(Node p) {
+        return (p.left != null) ? findMin(p.left) : p;
+    }
 
+    /**
+     * удаление узла с минимальным ключом
+     *
+     * @param p
+     * @return
+     */
+    private Node removeMin(Node p) {
+        if (p.left == null)
+            return p.right;
+        p.left = removeMin(p.left);
+        return balance(p);
+    }
+
+    private Node delete(Node p, int k) {
+        if (p == null) return null;
+        if (k < p.value)
+            p.left = delete(p.left, k);
+        else if (k > p.value)
+            p.right = delete(p.right, k);
+        else {
+            Node q = p.left;
+            Node r = p.right;
+            if (r == null) return q;
+            Node min = findMin(r);
+            min.right = removeMin(r);
+            min.left = q;
+            return balance(min);
+        }
+        return balance(p);
+    }
+
+    public void remove(int k) {
+        root = delete(root, k);
+    }
+
+    private void print(Node p) {
+        if (p != null) {
+            System.out.print(p.value + " ");
+            print(p.left);
+            print(p.right);
+        }
+    }
+
+    /**
+     * Прямой обход дерева
+     */
+    public void print() {
+        if (root == null) return;
+        print(root);
+        System.out.println();
+    }
+
+    private Node clear(Node p) {
+        if (p == null) return null;
+        p.left = clear(p.left);
+        p.right = clear(p.right);
+        return null;
+    }
+
+    public void clear() {
+        root = clear(root);
+    }
+
+    private Node find(Node p, int k) {
+        if (p == null) return null;
+        Node q;
+        if (k < p.value)
+            q = find(p.left, k);
+        else if (k > p.value)
+            q = find(p.right, k);
+        else return p;
+        return q;
+    }
+
+    public boolean find(int k) {
+        return find(root, k) != null;
     }
 }
